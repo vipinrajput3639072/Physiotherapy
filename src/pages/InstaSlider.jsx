@@ -41,6 +41,7 @@ const InstaSlider = () => {
           {duplicatedVideos.map((item, idx) => (
             <div
               key={idx}
+              
               onClick={() => setSelectedVideo(item.url)}
               className="relative flex-shrink-0 
                          w-48 h-64 md:w-80 md:h-96 
