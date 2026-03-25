@@ -22,14 +22,12 @@ const PhysioFooter = () => {
     "Joint Health Tips",
   ];
 
-  const scrollToTop = () =>
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="w-full bg-[#0a1414] text-white pt-20 pb-10 px-6 md:px-16 lg:px-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
-
           {/* Branding */}
           <div className="lg:col-span-2 space-y-6 lg:pr-12">
             <div className="flex items-center gap-3">
@@ -55,20 +53,10 @@ const PhysioFooter = () => {
                   >
                     <Icon size={18} />
                   </motion.div>
-                )
+                ),
               )}
             </div>
           </div>
-
-          {/* Contact */}
-          <FooterCol title="Contact Us">
-            <ContactItem
-              icon={MapPin}
-              value="Agra, Uttar Pradesh"
-            />
-            <ContactItem icon={Phone} value="+000 -123456789" />
-            <ContactItem icon={Mail} value="contact@example.com" />
-          </FooterCol>
 
           {/* Services */}
           <FooterCol title="Services">
@@ -85,17 +73,10 @@ const PhysioFooter = () => {
               ))}
             </ul>
           </FooterCol>
-
-          {/* Subscribe */}
-          <FooterCol title="Stay Informed">
-            <input
-              placeholder="Email"
-              className="w-full p-4 bg-white/5 rounded-2xl border border-white/10"
-            />
-            <button className="w-full bg-[#3cb0b0] py-4 rounded-2xl flex justify-between px-6">
-              Subscribe
-              <ArrowRight size={16} />
-            </button>
+          <FooterCol title="Contact Us">
+            <ContactItem icon={MapPin} value="Agra, Uttar Pradesh" />
+            <ContactItem icon={Phone} value="+000 -123456789" />
+            <ContactItem icon={Mail} value="contact@example.com" />
           </FooterCol>
         </div>
 

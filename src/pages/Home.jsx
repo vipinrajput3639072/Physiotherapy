@@ -52,7 +52,6 @@ const Home = () => {
         .animate-kenburns { animation: kenburns 10s ease-out forwards; }
       `}</style>
 
-      {/* --- TOP BAR --- */}
       <div className="bg-[#1a2e2c] text-white py-3 px-4 md:px-10 flex flex-col md:flex-row justify-between items-center text-[12px] md:text-sm gap-3 relative z-30 text-center md:text-left">
         <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center font-medium">
           <div className="flex items-center gap-2">
@@ -72,7 +71,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* --- FLOATING HEADER --- */}
       <header className="absolute w-full px-2 md:px-10 mt-4 md:mt-6 z-20">
         <div className="max-w-7xl mx-auto bg-white rounded-full py-2 md:py-4 px-4 md:px-10 flex justify-between items-center shadow-2xl border border-gray-50">
           <div className="text-teal-500 font-bold text-lg md:text-2xl tracking-tighter shrink-0">
@@ -117,7 +115,6 @@ const Home = () => {
         </div>
       </header>
 
-      {/* --- HERO SECTION --- */}
       <section className="relative h-[100svh] min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           {sliderImages.map((img, index) => (
@@ -169,14 +166,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- ABOUT SECTION --- */}
       <section
         id="about-section"
         className="py-16 md:py-24 bg-[#eef4f1] scroll-mt-24"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-            {/* Image Grid */}
             <div className="grid grid-cols-12 gap-3 relative order-2 lg:order-1">
               <div className="col-span-7">
                 <img
@@ -188,10 +183,12 @@ const Home = () => {
               <div className="col-span-5 space-y-3">
                 <img
                   src="https://static9.depositphotos.com/1003098/1153/i/450/depositphotos_11536478-stock-photo-physical-therapist-helping-a-patient.jpg"
+                  alt="Physical therapist"
                   className="rounded-2xl shadow-xl h-[145px] md:h-[240px] object-cover w-full"
                 />
                 <img
                   src="https://png.pngtree.com/thumb_back/fh260/background/20221029/pngtree-male-physician-assisting-elderly-man-in-wheelchair-with-physiotherapy-strength-training-photo-image_39847658.jpg"
+                  alt="Physiotherapy"
                   className="rounded-2xl shadow-xl h-[145px] md:h-[240px] object-cover w-full"
                 />
               </div>
@@ -203,7 +200,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Text Content */}
             <div className="space-y-6 md:space-y-8 order-1 lg:order-2">
               <div className="space-y-2 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-3">
@@ -233,10 +229,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- SERVICES LIST --- */}
       <Slider />
 
-      {/* --- QUALITY REHAB SECTION --- */}
       <section
         id="services-section"
         className="bg-[#e2e8e1] px-6 py-16 md:py-24"
@@ -254,7 +248,7 @@ const Home = () => {
                 Steps Toward <span className="text-[#489e9e]">Wellness</span>
               </h2>
             </div>
-            <button className="mx-auto md:mx-0 flex items-center gap-4 pl-6 pr-2 py-2 border border-[#1a2e2c]/20 rounded-full bg-white/50">
+            <button className="mx-auto md:mx-0 flex items-center gap-4 pl-6 pr-2 py-2 border border-[#1a2e2c]/20 rounded-full bg-white/50 hover:bg-white transition-colors">
               <span className="text-[#1a2e2c] text-xs font-semibold uppercase">
                 View All
               </span>
@@ -282,19 +276,36 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[50px] shadow-2xl">
-            <img
-              src="https://physeo.wpengine.com/wp-content/uploads/2025/07/service-img-1-1536x565.jpg"
-              className="w-full h-full object-cover"
-              alt="Treatment"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
+              <img
+                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                alt="Rehabilitation 1"
+              />
+            </div>
+
+            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
+              <img
+                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                alt="Rehabilitation 2"
+              />
+            </div>
+
+            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
+              <img
+                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                alt="Modern Clinic Interior"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <ServicesListView />
 
-      {/* --- WHY STANDS OUT SECTION --- */}
       <section className="bg-gradient-to-r from-[#0b2c2f] to-[#0f3d40] text-white py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex gap-4 h-[300px] md:h-[500px]">

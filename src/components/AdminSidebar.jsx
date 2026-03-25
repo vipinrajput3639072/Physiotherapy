@@ -1,8 +1,17 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import {
-  LogOut, BarChart3, Users, Calendar, ClipboardList,
-  DollarSign, TrendingUp, Bell, Settings, Activity,
-  Stethoscope, Briefcase
+  LogOut,
+  BarChart3,
+  Users,
+  Calendar,
+  ClipboardList,
+  DollarSign,
+  TrendingUp,
+  Bell,
+  Settings,
+  Activity,
+  Stethoscope,
+  Briefcase,
 } from "lucide-react";
 import useAuthStore from "../stores/authStore";
 
@@ -13,39 +22,61 @@ const AdminSidebar = () => {
   const menuGroups = [
     {
       group: "General",
-      items: [
-        { icon: BarChart3, label: "Dashboard", to: "/admin" },
-      ]
+      items: [{ icon: BarChart3, label: "Dashboard", to: "/admin" }],
     },
     {
       group: "Management",
       items: [
         { icon: Users, label: "Patients", to: "/admin/Patient-Management" },
-        { icon: Briefcase, label: "Therapists", to: "/admin/Therapist-Management" },
-        { icon: Calendar, label: "Appointments", to: "/admin/Appointment-Management" },
-      ]
+        {
+          icon: Briefcase,
+          label: "Therapists",
+          to: "/admin/Therapist-Management",
+        },
+        {
+          icon: Calendar,
+          label: "Appointments",
+          to: "/admin/Appointment-Management",
+        },
+      ],
     },
     {
       group: "Clinical",
       items: [
-        { icon: ClipboardList, label: "Treatments", to: "/admin/Treatment-Management" },
-        { icon: Activity, label: "Patient Progress", to: "/admin/Patient-Progress" },
-      ]
+        {
+          icon: ClipboardList,
+          label: "Treatments",
+          to: "/admin/Treatment-Management",
+        },
+        {
+          icon: Activity,
+          label: "Patient Progress",
+          to: "/admin/Patient-Progress",
+        },
+      ],
     },
     {
       group: "Financial & Data",
       items: [
-        { icon: DollarSign, label: "Billing & Payments", to: "/admin/Billing-Management" },
-        { icon: TrendingUp, label: "Reports & Analytics", to: "/admin/Analytics-Dashboard" },
-      ]
+        {
+          icon: DollarSign,
+          label: "Billing & Payments",
+          to: "/admin/Billing-Management",
+        },
+        {
+          icon: TrendingUp,
+          label: "Reports & Analytics",
+          to: "/admin/Analytics-Dashboard",
+        },
+      ],
     },
     {
       group: "System",
       items: [
         { icon: Bell, label: "Notifications", to: "/admin/Notifications-Hub" },
         { icon: Settings, label: "Settings", to: "/admin/Settings-Manager" },
-      ]
-    }
+      ],
+    },
   ];
 
   const handleLogout = () => {
@@ -72,8 +103,12 @@ const AdminSidebar = () => {
               {user.name?.charAt(0)}
             </div>
             <div className="overflow-hidden">
-              <p className="font-bold text-gray-900 truncate text-sm">{user.name}</p>
-              <p className="text-[10px] text-blue-600 font-black uppercase tracking-widest">Administrator</p>
+              <p className="font-bold text-gray-900 truncate text-sm">
+                {user.name}
+              </p>
+              <p className="text-[10px] text-blue-600 font-black uppercase tracking-widest">
+                Administrator
+              </p>
             </div>
           </div>
         )}
@@ -99,7 +134,9 @@ const AdminSidebar = () => {
                       }`
                     }
                   >
-                    <item.icon className={`w-5 h-5 ${({isActive}) => isActive ? 'text-white' : 'opacity-70'}`} />
+                    <item.icon
+                      className={`w-5 h-5 ${({ isActive }) => (isActive ? "text-white" : "opacity-70")}`}
+                    />
                     {item.label}
                   </NavLink>
                 </li>
