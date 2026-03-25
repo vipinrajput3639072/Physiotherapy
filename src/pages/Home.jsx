@@ -22,6 +22,7 @@ import TestimonialSection from "./TestimonialSection";
 import BookingSection from "./BookingSection";
 import PhysioFooter from "./Footer";
 import InstaSlider from "./InstaSlider";
+import Header from "./Header";
 
 const sliderImages = [
   "https://www.casamed.in/_next/static/media/assessment-step-indian.e63e2586.jpg",
@@ -71,49 +72,7 @@ const Home = () => {
         </div>
       </div>
 
-      <header className="absolute w-full px-2 md:px-10 mt-4 md:mt-6 z-20">
-        <div className="max-w-7xl mx-auto bg-white rounded-full py-2 md:py-4 px-4 md:px-10 flex justify-between items-center shadow-2xl border border-gray-50">
-          <div className="text-teal-500 font-bold text-lg md:text-2xl tracking-tighter shrink-0">
-            <span className="mr-1">⚕️</span> PHY
-            <span className="text-[#1a2e2c]">SEO</span>
-          </div>
-
-          <nav className="hidden lg:flex gap-6 font-bold text-gray-500 text-xs uppercase tracking-wider">
-            <a href="#" className="text-teal-500">
-              Home
-            </a>
-            <a
-              href="#services-section"
-              className="hover:text-teal-500 transition-colors"
-            >
-              Services
-            </a>
-            <a
-              href="#about-section"
-              className="hover:text-teal-500 transition-colors"
-            >
-              About
-            </a>
-            <a href="#" className="hover:text-teal-500 transition-colors">
-              Blog
-            </a>
-            <a href="#" className="hover:text-teal-500 transition-colors">
-              Contact
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-2 md:gap-4">
-            <LoginModal />
-            <button className="bg-[#38b2ac] hover:bg-[#2c7a7b] text-white px-4 md:px-8 py-2 md:py-3 rounded-full flex items-center gap-2 shadow-lg transition-all text-[11px] md:text-sm font-bold active:scale-95 whitespace-nowrap">
-              <span className="hidden xs:inline">Appointment</span>
-              <span className="inline xs:hidden">Book</span>
-              <div className="bg-[#1a2e2c] rounded-full p-1 hidden sm:block">
-                <ArrowRight size={12} />
-              </div>
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header/>
 
       <section className="relative h-[100svh] min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
