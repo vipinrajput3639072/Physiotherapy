@@ -76,7 +76,7 @@ const PhysioFooter = () => {
           <FooterCol title="Contact Us">
             <ContactItem icon={MapPin} value="Agra, Uttar Pradesh" />
             <ContactItem icon={Phone} value="+000 -123456789" />
-            <ContactItem icon={Mail} value="contact@example.com" />
+            <ContactItem icon={Mail} value="vr3639072@gmail.com" />
           </FooterCol>
         </div>
 

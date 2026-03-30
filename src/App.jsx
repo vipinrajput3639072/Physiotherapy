@@ -64,7 +64,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 };
 
 const Landing = () => (
-  <div className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(251,146,60,0.2),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(20,184,166,0.18),_transparent_30%),linear-gradient(135deg,#fff7ed_0%,#ecfeff_50%,#eff6ff_100%)] px-6 py-10 md:px-10">
+  <div className="min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.2),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(20,184,166,0.18),transparent_30%),linear-gradient(135deg,#fff7ed_0%,#ecfeff_50%,#eff6ff_100%)] px-6 py-10 md:px-10">
     <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
       <div>
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 text-sm font-medium text-orange-700 shadow-sm backdrop-blur">
@@ -204,7 +204,9 @@ const Landing = () => (
         </div>
       </div>
     </div>
+
   </div>
+  
 );
 
 function App() {

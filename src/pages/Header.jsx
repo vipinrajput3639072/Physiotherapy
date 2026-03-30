@@ -35,13 +35,7 @@ const Header = () => {
         <div className="flex items-center gap-2 md:gap-4">
           {/* Replace with your actual LoginModal component */}
             <LoginModal/>          
-          <button className="bg-[#38b2ac] hover:bg-[#2c7a7b] text-white px-5 md:px-8 py-2.5 md:py-3 rounded-full flex items-center gap-2 shadow-lg shadow-teal-200 transition-all active:scale-95 text-[11px] md:text-sm font-bold whitespace-nowrap">
-            <span className="hidden xs:inline">Appointment</span>
-            <span className="inline xs:hidden">Book</span>
-            <div className="bg-[#1a2e2c] rounded-full p-1 hidden sm:flex items-center justify-center">
-              <ArrowRight size={14} color="white" />
-            </div>
-          </button>
+          
 
           {/* Mobile Toggle */}
           <button 
