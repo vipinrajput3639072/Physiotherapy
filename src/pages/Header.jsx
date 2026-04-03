@@ -19,7 +19,7 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-8 font-bold text-gray-500 text-xs uppercase tracking-widest">
-          {['Home', 'Services', 'About', 'Blog', 'Contact'].map((item) => (
+          {['Home','About', 'Services', 'Contact'].map((item) => (
             <a
               key={item}
               href={item === 'Home' ? '#' : `#${item.toLowerCase()}-section`}
@@ -51,9 +51,9 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-xl p-6 border border-gray-100 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
           <a href="#" className="font-bold text-teal-500">Home</a>
-          <a href="#services" className="font-bold text-gray-600">Services</a>
           <a href="#about" className="font-bold text-gray-600">About</a>
-          <a href="#" className="font-bold text-gray-600">Contact</a>
+          <a href="#services" className="font-bold text-gray-600">Services</a>
+          <a href="#contact" className="font-bold text-gray-600">Contact</a>
         </div>
       )}
     </header>

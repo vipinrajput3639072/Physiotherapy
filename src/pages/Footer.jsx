@@ -78,6 +78,9 @@ const PhysioFooter = () => {
             <ContactItem icon={Phone} value="+000 -123456789" />
             <ContactItem icon={Mail} value="vr3639072@gmail.com" />
           </FooterCol>
+          <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113614.17967458472!2d77.79909789562222!3d27.1423450176545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39747753683f2551%3A0xfa60783e22861996!2sPurushottam%20Singh%20Physiotherapy%20Center!5e0!3m2!1sen!2sin!4v1775194308840!5m2!1sen!2sin" width="250px" height="200px"></iframe>
+            </div>
         </div>
 
         {/* Bottom */}
@@ -95,6 +98,7 @@ const PhysioFooter = () => {
           </motion.button>
         </div>
       </div>
+      
     </footer>
   );
 };

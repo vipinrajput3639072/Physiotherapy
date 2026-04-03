@@ -57,7 +57,10 @@ const Home = () => {
         <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center font-medium">
           <div className="flex items-center gap-2">
             <MapPin size={14} className="text-[#4fd1c5] shrink-0" />
-            <span>Sanjay Place, Civil Lines, Agra, UP 282002</span>
+            <span>
+              Mulla ki pyau, Kalyanpur, airforce gate, near closed, Airport
+              Area, Idgah Colony, Agra, Uttar Pradesh 283102
+            </span>
           </div>
           <div className="flex items-center gap-2 md:border-l md:border-gray-600 md:pl-6">
             <Clock size={14} className="text-[#4fd1c5] shrink-0" />
@@ -100,9 +103,10 @@ const Home = () => {
                 Helping Hands
               </span>
             </div>
-            <h1 className="text-4xl md:text-7xl font-bold leading-[1.2] md:leading-[1.1] mb-6 drop-shadow-lg">
-              Stretch Your <span className="text-teal-400">Hands To</span>{" "}
-              <br className="hidden md:block" /> Reduce Daily Pain
+            <h1 className="text-4xl md:text-6xl font-bold leading-[1.2] md:leading-[1.1] mb-6 drop-shadow-lg">
+              Best Physiotherapy{" "}
+              <span className="text-teal-400">Center in Agra</span>{" "}
+              <br className="hidden md:block" /> for Paralysis & Pain Treatment
             </h1>
             <p className="text-gray-200 text-sm md:text-xl mb-10 max-w-lg leading-relaxed font-medium">
               Daily tasks can place constant stress on your hands. We help you
@@ -110,14 +114,25 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="tel:+19048467532"
+                href="tel:+19917752033"
                 className="flex items-center bg-[#38b2ac] rounded-full p-1.5 pr-6 cursor-pointer group shadow-xl w-fit"
               >
                 <div className="bg-[#1a2e2c] p-2.5 rounded-full mr-3 group-hover:rotate-12 transition-transform">
                   <Phone size={16} className="text-white" />
                 </div>
                 <div className="text-white font-bold text-xs md:text-sm">
-                  +1 (904) 846-7532
+                  +91 (991) 775-2033
+                </div>
+              </a>
+              <a
+                href="tel:+19917752033"
+                className="flex items-center bg-[#38b2ac] rounded-full p-1.5 pr-6 cursor-pointer group shadow-xl w-fit"
+              >
+                <div className="bg-[#1a2e2c] p-2.5 rounded-full mr-3 group-hover:rotate-12 transition-transform">
+                  <Phone size={16} className="text-white" />
+                </div>
+                <div className="text-white font-bold text-xs md:text-sm">
+                  +91 (752) 046-0198
                 </div>
               </a>
             </div>
@@ -152,7 +167,7 @@ const Home = () => {
                 />
               </div>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#1a2e2c] text-white w-20 h-20 md:w-32 md:h-32 rounded-full border-4 md:border-8 border-[#eef4f1] flex flex-col items-center justify-center text-center shadow-2xl">
-                <span className="text-xl md:text-3xl font-bold">18+</span>
+                <span className="text-xl md:text-3xl font-bold">20 +</span>
                 <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest">
                   Expertise
                 </span>
@@ -172,11 +187,10 @@ const Home = () => {
                 </h2>
               </div>
               <p className="text-slate-600 text-sm md:text-base leading-relaxed text-center md:text-left">
-                Relieving pain and changing lives beyond treatment. Behind every
-                successful recovery is our passion for care.
+                Purushottam Singh Physiotherapy Center has been providing trusted and effective physiotherapy treatment since 2003. Under the expert guidance of Dr. Santosh Kumar, we are committed to helping patients recover from pain, injuries, and neurological conditions using modern techniques and personalized care.
               </p>
               <blockquote className="border-l-4 border-teal-500 pl-4 md:pl-6 italic text-slate-800 font-semibold text-base md:text-lg">
-                "True Healing Comes From Trust, Patience, and Compassion."
+                "We combine advanced physiotherapy machines, manual therapy, and acupressure techniques to deliver safe, non-surgical, and result-oriented treatments."
               </blockquote>
               <div className="flex justify-center md:justify-start">
                 <button className="bg-[#48b2a3] text-white px-8 py-3.5 rounded-full flex items-center gap-3 font-bold shadow-xl transition-all">
@@ -189,79 +203,6 @@ const Home = () => {
       </section>
 
       <Slider />
-
-      <section
-        id="services-section"
-        className="bg-[#e2e8e1] px-6 py-16 md:py-24"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                <div className="h-[1px] w-12 bg-[#489e9e]"></div>
-                <span className="text-gray-600 text-[10px] font-bold uppercase tracking-[0.2em]">
-                  Quality Rehab
-                </span>
-              </div>
-              <h2 className="text-[#1a2e2c] text-3xl md:text-5xl lg:text-6xl font-semibold">
-                Steps Toward <span className="text-[#489e9e]">Wellness</span>
-              </h2>
-            </div>
-            <button className="mx-auto md:mx-0 flex items-center gap-4 pl-6 pr-2 py-2 border border-[#1a2e2c]/20 rounded-full bg-white/50 hover:bg-white transition-colors">
-              <span className="text-[#1a2e2c] text-xs font-semibold uppercase">
-                View All
-              </span>
-              <div className="bg-[#489e9e] p-2 rounded-full text-white">
-                <ArrowRight size={16} />
-              </div>
-            </button>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12">
-            <div className="flex items-center gap-4 text-center md:text-left">
-              <div className="w-16 h-16 bg-[#489e9e] rounded-full flex items-center justify-center text-white shrink-0 mx-auto">
-                <Waves size={28} />
-              </div>
-              <h3 className="text-[#489e9e] text-xl md:text-2xl font-medium">
-                Advanced Physiotherapy
-              </h3>
-            </div>
-            <p className="text-gray-600 text-sm md:text-base max-w-md text-center md:text-left">
-              Our treatments are designed to relieve pain and enhance mobility
-              using cutting-edge technology.
-            </p>
-            <div className="hidden md:flex ml-auto w-12 h-12 bg-[#489e9e] rounded-full items-center justify-center text-white cursor-pointer hover:scale-110 transition-transform">
-              <MoveUpRight size={20} />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
-              <img
-                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                alt="Rehabilitation 1"
-              />
-            </div>
-
-            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
-              <img
-                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                alt="Rehabilitation 2"
-              />
-            </div>
-
-            <div className="w-full h-[250px] md:h-[500px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-xl">
-              <img
-                src="https://thumbs.dreamstime.com/b/physical-therapist-working-patient-aged-caucasian-man-smiling-doing-exercises-recovery-center-young-caring-asian-408525303.jpg"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                alt="Modern Clinic Interior"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       <ServicesListView />
 
@@ -285,14 +226,14 @@ const Home = () => {
               Excellence in Care
             </p>
             <h2 className="text-3xl md:text-5xl font-bold text-center md:text-left">
-              Why Our Clinic <span className="text-teal-400">Stands Out</span>
+              We are highly  <span className="text-teal-400">experienced in treating</span>
             </h2>
 
             <div className="space-y-6">
               {[
-                { label: "Care & Patience", value: 93 },
-                { label: "Honest Conversation", value: 95 },
-                { label: "Specialized Experience", value: 96 },
+                { label: "Paralysis", value: 93 },
+                { label: "Facial Palsy", value: 95 },
+                { label: " Neurological Disorders", value: 96 },
               ].map((item, idx) => (
                 <div key={idx} className="space-y-2">
                   <div className="flex justify-between text-sm">

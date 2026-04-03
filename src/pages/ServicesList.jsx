@@ -1,100 +1,139 @@
 import React from "react";
-import {
-  ArrowRight,
-  Activity,
-  Zap,
-  ShieldAlert,
-  HeartPulse,
-  Bone,
-  Home,
-  PhoneCall,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const servicesList = [
   {
-    title: "Manual Therapy",
+    title: "Paralysis Treatment",
     description:
-      "Hands-on physiotherapy designed to alleviate muscle tension and restore natural movement patterns.",
-    icon: <Activity size={28} />,
+      "Specialized recovery programs for stroke and nerve damage. Focus on mobility.",
+    image:
+      "https://ccnbangla.com/wp-content/uploads/2024/10/unnamed-file-8.jpg",
   },
   {
-    title: "Strength Recovery",
+    title: "Arthritis Treatment",
     description:
-      "Specialized rehabilitation designed to restore strength and flexibility after injury or surgery.",
-    icon: <Zap size={28} />,
+      "Pain management and joint mobility improvement using advanced techniques.",
+    image:
+      "https://arvhospital.com/wp-content/uploads/2021/03/Understanding-and-Treating-Arthritis-%E2%80%93-Symptoms-Facts-Treatment-much-more.jpg",
   },
   {
-    title: "Back Pain Relief",
+    title: "Cervical & Spine Care",
     description:
-      "Focuses on reducing pain and improving spinal alignment for long-term comfort and mobility.",
-    icon: <ShieldAlert size={28} />,
+      "Care for Spondylitis, Slip Disc, and chronic Back Pain through targeted therapy.",
+    image:
+      "https://njbrainspine.com/wp-content/uploads/2025/05/Nonsurgical-Back-Pain-Treatment-New-Jersey-Brain-and-Spine.jpg",
   },
   {
-    title: "Sports Injuries",
+    title: "Sciatica Pain Treatment",
     description:
-      "Helping athletes recover faster and return to peak performance with targeted exercise plans.",
-    icon: <HeartPulse size={28} />,
+      "Effective therapy to reduce nerve pain radiating from the lower back to legs.",
+    image:
+      "https://hssh.health/wp-content/uploads/2023/12/Masages-for-Sciatica.jpg",
   },
   {
-    title: "Joint Care",
+    title: "Facial Palsy Treatment",
     description:
-      "Specialized care for arthritis and joint stiffness to improve your daily range of motion.",
-    icon: <Bone size={28} />,
+      "Special care for facial nerve recovery with targeted exercises and stimulation.",
+    image:
+      "https://sfc02.cdn.medel.com/images/librariesprovider4/s2/fes-therapy-for-facial-palsy.jpg?auto=format&sfvrsn=69cad045_20",
   },
-  // ✅ 6th EXTRA OPTION: HOME VISITS
   {
-    title: "Home Physiotherapy",
+    title: "Frozen Shoulder Treatment",
     description:
-      "Get professional treatment in the comfort of your home. Perfect for post-op or elderly care.",
-    icon: <Home size={28} />,
+      "Improve movement and reduce stiffness through guided mobilization sessions.",
+    image:
+      "https://img.saudigerman.com/wp-content/uploads/2023/10/19144457/Frozen-Shoulder-Treatments.webp",
+  },
+  {
+    title: " Post-Fracture Rehabilitation",
+    description:
+      "Complete physiotherapy support after fractures to regain strength, flexibility, and movement.",
+    image: "https://thephysiorelief.com/assets/post-fracture.jpeg",
+  },
+  {
+    title: " Joint Pain Treatment",
+    description:
+      "Relief from knee, shoulder, and other joint pains through therapy and strengthening exercises.",
+    image:
+      "https://neelamhospital.com/wp-content/uploads/2025/07/Add-a-heading-2.jpg",
+  },
+  {
+    title: " Migraine & Headache Therapy",
+    description:
+      "Non-medical physiotherapy solutions to manage migraine and chronic headaches.",
+    image:
+      "https://shardapsychiatricclinic.com/wp-content/uploads/2025/02/difference-between-headaches-and-migraines-1024x683-1.jpg",
+  },
+  {
+    title: "Neurological Disorders Treatment",
+    description: "Cerebral Palsy,Epilepsy Support Therapy,Numbness & Weakness",
+    image: "https://drbhinderclinic.com/assets/Treatments/Neurological.jpg",
+  },
+  {
+    title: "Acupressure & Therapy (Massage)",
+    description:
+      "Natural healing techniques to improve blood circulation, reduce stress, and relieve pain.",
+    image:
+      "https://static.vecteezy.com/system/resources/thumbnails/065/578/067/small/closeup-of-man-getting-acupressure-massage-at-spa-salon-top-view-female-masseuse-massaging-unrecognizable-man-shoulders-pain-relief-for-sportsmen-businessmen-and-office-workers-photo.jpg",
+  },
+  {
+    title: "Vertigo Treatment",
+    description:
+      "Special exercises and therapy for balance improvement and dizziness control..",
+    image:
+      "https://www.vertigoclinic.in/wp-content/uploads/2021/12/Screenshot-2021-12-22-at-19-10-34-Vertigo_for_Physical_Therapy-jpeg-JPEG-Image-1024-%C3%97-683-pixels-%E2%80%94-Scaled-84.png",
   },
 ];
 
 const ServicesListView = () => {
   return (
-    <section className="bg-[#e2e8e1] py-20 px-6">
+    <section className="bg-[#e2e8e1] py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="text-left">
-            <span className="text-[#489e9e] font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
-              Our Expertise
-            </span>
-            <h2 className="text-[#1a2e2c] text-4xl md:text-6xl font-serif font-bold leading-tight">
-              Healing <span className="text-[#489e9e]">Solutions</span>
-            </h2>
-          </div>
+        <div className="mb-12">
+          <span className="text-[#489e9e] font-bold text-xs uppercase tracking-[0.3em] mb-3 block">
+            Our Expertise
+          </span>
+          <h2 className="text-[#1a2e2c] text-3xl md:text-4xl font-serif font-bold leading-tight">
+            Healing <span className="text-[#489e9e]">Solutions</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {servicesList.map((service, index) => (
             <div
               key={index}
-              className="group relative bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#489e9e]/20 flex flex-col h-full overflow-hidden"
+              className="group relative h-[280px] rounded-[2rem] overflow-hidden shadow-md transition-all duration-500 cursor-pointer"
             >
-              {/* Icon Style */}
-              <div className="mb-8 w-16 h-16 bg-[#f0f4f0] text-[#1a2e2c] rounded-2xl flex items-center justify-center group-hover:bg-[#489e9e] group-hover:text-white transition-all duration-500 transform group-hover:-rotate-12 shadow-inner">
-                {service.icon}
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/75 transition-all duration-500" />
               </div>
 
-              {/* Content */}
-              <div className="flex-grow">
-                <h3 className="text-[#1a2e2c] text-2xl font-serif font-bold mb-4 tracking-tight group-hover:text-[#489e9e] transition-colors">
+              {/* Content Overlay */}
+              <div className="relative h-full flex flex-col justify-end p-6 text-white z-10">
+                {/* Title */}
+                <h3 className="text-xl font-serif font-bold mb-1 transform transition-transform duration-500 group-hover:-translate-y-1">
                   {service.title}
                 </h3>
-                <p className="text-gray-500 leading-relaxed mb-8 text-sm md:text-base opacity-80 group-hover:opacity-100">
-                  {service.description}
-                </p>
-              </div>
 
-              {/* Action */}
-              <div className="flex items-center text-[#1a2e2c] font-black text-[10px] uppercase tracking-[0.2em] group-hover:text-[#489e9e] transition-colors cursor-pointer border-t pt-6 border-gray-100">
-                <span>View Details</span>
-                <ArrowRight className="ml-auto w-5 h-5 transform group-hover:translate-x-2 transition-transform" />
+                {/* Description Reveal */}
+                <div className="overflow-hidden max-h-0 opacity-0 transform translate-y-2 transition-all duration-500 group-hover:max-h-32 group-hover:opacity-100 group-hover:translate-y-0">
+                  <p className="text-gray-300 leading-snug text-sm mb-2">
+                    {service.description}
+                  </p>
+                </div>
               </div>
 
               {/* Animated Accent Bar */}
-              <div className="absolute bottom-0 left-0 h-2 w-0 bg-gradient-to-r from-[#489e9e] to-[#1a2e2c] transition-all duration-700 group-hover:w-full" />
+              <div className="absolute bottom-0 left-0 h-1.5 w-0 bg-[#489e9e] transition-all duration-700 group-hover:w-full z-20" />
             </div>
           ))}
         </div>

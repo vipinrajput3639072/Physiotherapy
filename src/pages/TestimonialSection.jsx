@@ -104,17 +104,7 @@ const TestimonialSection = () => {
 
                 <StarRating rating={current.rating} />
 
-                <div className="flex items-center gap-6 mt-8">
-                  <img 
-                    src={current.image} 
-                    alt={current.patientName}
-                    className="w-16 h-16 rounded-full border-2 border-teal-500 object-cover"
-                  />
-                  <div>
-                    <h4 className="text-white text-2xl font-semibold">{current.patientName}</h4>
-                    <p className="text-teal-400 font-medium">{current.patientRole}</p>
-                  </div>
-                </div>
+                
               </motion.div>
             </AnimatePresence>
           </div>

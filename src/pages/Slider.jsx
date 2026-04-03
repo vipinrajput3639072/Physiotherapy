@@ -62,7 +62,7 @@ const Slider = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a1a19] overflow-hidden">
+    <section id="services-section" className="py-16 md:py-24 bg-[#0a1a19] overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6">
         {/* --- HEADER TEXT SECTION --- */}
         <div className="text-center mb-10 md:mb-16">
