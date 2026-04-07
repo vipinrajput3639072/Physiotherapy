@@ -55,7 +55,7 @@ const servicesList = [
     description:
       "Relief from knee, shoulder, and other joint pains through therapy and strengthening exercises.",
     image:
-      "https://neelamhospital.com/wp-content/uploads/2025/07/Add-a-heading-2.jpg",
+      "https://www.advancedortho.com.sg/wp-content/uploads/2024/12/foot-arthritis-signs-scaled.jpg",
   },
   {
     title: " Migraine & Headache Therapy",

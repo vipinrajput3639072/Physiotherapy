@@ -22,7 +22,7 @@ import TestimonialSection from "./TestimonialSection";
 import BookingSection from "./BookingSection";
 import PhysioFooter from "./Footer";
 import InstaSlider from "./InstaSlider";
-import Header from "./Header";
+import Header2 from "./Header";
 
 const sliderImages = [
   "https://www.casamed.in/_next/static/media/assessment-step-indian.e63e2586.jpg",
@@ -64,7 +64,7 @@ const Home = () => {
           </div>
           <div className="flex items-center gap-2 md:border-l md:border-gray-600 md:pl-6">
             <Clock size={14} className="text-[#4fd1c5] shrink-0" />
-            <span>Mon - Sat: 09:00 am - 06:00 pm</span>
+            <span>Mon - Sat: 07:00 am - 08:00 pm</span>
           </div>
         </div>
         <div className="flex gap-4 items-center">
@@ -75,7 +75,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Header />
+      <Header2/>
 
       <section className="relative h-[100svh] min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
