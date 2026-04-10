@@ -65,9 +65,8 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 
 const Landing = () => (
   <>
-  <Home/>
+    <Home />
   </>
-  
 );
 
 function App() {

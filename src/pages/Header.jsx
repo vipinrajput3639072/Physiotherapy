@@ -36,7 +36,7 @@ const Header2 = () => {
         <div className="flex items-center gap-2 md:gap-4">
           {/* Replace with your actual LoginModal component */}
           <LoginModal />
-
+          
           {/* Mobile Toggle */}
           <button
             className="lg:hidden p-2 text-gray-600"
