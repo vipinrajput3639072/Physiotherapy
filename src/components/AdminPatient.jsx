@@ -1,16 +1,5 @@
 import { useState } from "react";
-import {
-  Search,
-  Plus,
-  Edit2,
-  Trash2,
-  FileText,
-  History,
-  UserPlus,
-  X,
-  ChevronRight,
-  Filter,
-} from "lucide-react";
+import { Search, Edit2, Trash2, History, UserPlus, X, Plus } from "lucide-react";
 import { fakeData } from "../utils/fakeData";
 import toast from "react-hot-toast";
 
@@ -22,9 +11,7 @@ const PatientManagement = () => {
 
   // --- Handlers ---
   const handleDelete = (id) => {
-    if (
-      window.confirm("Are you sure you want to delete this patient record?")
-    ) {
+    if (window.confirm("Are you sure you want to delete this patient record?")) {
       setPatients(patients.filter((p) => p.id !== id));
       toast.error("Patient record deleted");
     }
@@ -35,207 +22,173 @@ const PatientManagement = () => {
     setIsModalOpen(true);
   };
 
+  // --- Add or Update Function ---
+  const handleSavePatient = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    
+    const patientData = {
+      id: editingPatient ? editingPatient.id : patients.length + 1,
+      name: formData.get("name"),
+      age: formData.get("age"),
+      status: formData.get("status"),
+    };
+
+    if (editingPatient) {
+      // Update logic
+      setPatients(patients.map(p => p.id === editingPatient.id ? patientData : p));
+      toast.success("Profile updated successfully");
+    } else {
+      // Add logic
+      setPatients([patientData, ...patients]);
+      toast.success("New patient registered");
+    }
+
+    setIsModalOpen(false);
+    setEditingPatient(null);
+  };
+
   const filteredPatients = patients.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      {/* Header Actions */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">
-            Patient Management
-          </h1>
-          <p className="text-sm text-gray-500">
-            Total active records: {patients.length}
-          </p>
-        </div>
-
-        <div className="flex w-full md:w-auto gap-3">
-          <div className="relative flex-1 md:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search by name or ID..."
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 border-none rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+    <div className="ml-72 min-h-screen bg-gray-50/50 p-8 pt-10 animate-in fade-in duration-500">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <h1 className="text-3xl font-black text-gray-900 tracking-tight">
+              Patient <span className="text-blue-600">Management</span>
+            </h1>
+            <p className="text-gray-500 font-medium mt-1">
+              Currently managing {patients.length} active records
+            </p>
           </div>
-          <button
-            onClick={() => handleOpenModal()}
-            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all"
-          >
-            <UserPlus className="w-4 h-4" />
-            <span className="hidden sm:inline">Add Patient</span>
-          </button>
-        </div>
-      </div>
 
-      {/* Patients Table */}
-      <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead className="bg-gray-50/50 border-b border-gray-100">
-              <tr>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase">
-                  Patient Details
-                </th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase">
-                  Status
-                </th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase">
-                  Medical History
-                </th>
-                <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase text-right">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-50">
-              {filteredPatients.map((patient) => (
-                <tr
-                  key={patient.id}
-                  className="hover:bg-emerald-50/30 transition-colors group"
-                >
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                        {patient.name.charAt(0)}
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900">
-                          {patient.name}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          {patient.age} years • ID: #{patient.id}042
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase ${
-                        patient.status === "Active"
-                          ? "bg-emerald-100 text-emerald-700"
-                          : "bg-amber-100 text-amber-700"
-                      }`}
-                    >
-                      {patient.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    <button className="flex items-center gap-2 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors">
-                      <History className="w-3.5 h-3.5" />
-                      View Records
-                    </button>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <div className="flex justify-end gap-2">
-                      <button
-                        onClick={() => handleOpenModal(patient)}
-                        className="p-2 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all"
-                      >
-                        <Edit2 className="w-4 h-4" />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(patient.id)}
-                        className="p-2 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </td>
+          <div className="flex items-center gap-3 w-full md:w-auto">
+            <div className="relative flex-1 md:w-80">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search by name..."
+                className="w-full pl-12 pr-4 py-3 bg-white border border-gray-100 rounded-2xl text-sm focus:ring-2 focus:ring-blue-600 outline-none shadow-sm transition-all"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <button
+              onClick={() => handleOpenModal()}
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 active:scale-95"
+            >
+              <Plus className="w-5 h-5" />
+              <span>Add Patient</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Table Section */}
+        <div className="bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="bg-gray-50/50 border-b border-gray-100">
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Patient Details</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                  <th className="px-8 py-5 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {filteredPatients.map((patient) => (
+                  <tr key={patient.id} className="hover:bg-blue-50/30 transition-colors group">
+                    <td className="px-8 py-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-black">
+                          {patient.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900">{patient.name}</p>
+                          <p className="text-xs text-gray-400">ID: #{patient.id} • {patient.age} yrs</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-8 py-6">
+                      <span className={`px-4 py-1.5 rounded-xl text-[10px] font-black uppercase ${
+                        patient.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"
+                      }`}>
+                        {patient.status}
+                      </span>
+                    </td>
+                    <td className="px-8 py-6 text-right">
+                      <div className="flex justify-end gap-2">
+                        <button onClick={() => handleOpenModal(patient)} className="p-2.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all">
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button onClick={() => handleDelete(patient.id)} className="p-2.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      {/* --- Patient Modal (Add/Edit) --- */}
+      {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/20 backdrop-blur-sm">
-          <div className="w-full max-w-md h-full bg-white shadow-2xl p-8 animate-in slide-in-from-right duration-300 overflow-y-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-xl font-bold text-gray-900">
-                {editingPatient
-                  ? "Edit Patient Profile"
-                  : "Register New Patient"}
+        <div className="fixed inset-0 z-[60] flex items-center justify-end bg-black/20 backdrop-blur-sm">
+          <div className="w-full max-w-lg h-full bg-white shadow-2xl animate-in slide-in-from-right duration-500 overflow-y-auto">
+            <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+              <h2 className="text-2xl font-black text-gray-900">
+                {editingPatient ? "Edit Profile" : "New Registration"}
               </h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 hover:bg-gray-100 rounded-full"
-              >
-                <X className="w-5 h-5" />
+              <button onClick={() => setIsModalOpen(false)} className="p-3 hover:bg-gray-100 rounded-2xl text-gray-400">
+                <X className="w-6 h-6" />
               </button>
             </div>
 
-            <form
-              className="space-y-6"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setIsModalOpen(false);
-                toast.success("Saved successfully");
-              }}
-            >
+            <form className="p-8 space-y-6" onSubmit={handleSavePatient}>
               <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">
-                  Full Name
-                </label>
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Full Name</label>
                 <input
+                  name="name"
                   type="text"
+                  required
                   defaultValue={editingPatient?.name}
-                  className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
-                  placeholder="e.g. John Doe"
+                  className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner"
+                  placeholder="e.g. Rahul Sharma"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-700">
-                    Age
-                  </label>
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Age</label>
                   <input
+                    name="age"
                     type="number"
+                    required
                     defaultValue={editingPatient?.age}
-                    className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-700">
-                    Status
-                  </label>
-                  <select className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500">
-                    <option>Active</option>
-                    <option>Pending</option>
-                    <option>Completed</option>
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Status</label>
+                  <select name="status" defaultValue={editingPatient?.status || "Active"} className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner appearance-none cursor-pointer">
+                    <option value="Active">Active</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
                   </select>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-gray-700">
-                  Medical History Summary
-                </label>
-                <textarea
-                  className="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 h-32"
-                  placeholder="Notes on past injuries, surgeries, or chronic conditions..."
-                ></textarea>
-              </div>
-
-              <div className="pt-4 flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="flex-1 py-3 text-gray-600 font-semibold hover:bg-gray-50 rounded-xl transition-all"
-                >
+              <div className="pt-6 flex gap-4">
+                <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-4 text-gray-500 font-bold hover:bg-gray-100 rounded-2xl transition-all">
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="flex-1 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 shadow-lg shadow-emerald-200 transition-all"
-                >
+                <button type="submit" className="flex-[2] py-4 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 shadow-lg transition-all active:scale-95">
                   {editingPatient ? "Update Record" : "Create Profile"}
                 </button>
               </div>

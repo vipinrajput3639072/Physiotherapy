@@ -18,7 +18,7 @@ const SettingsManager = () => {
   ];
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
+    <div className="flex-1 ml-72 overflow-y-auto max-w-5xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
       
       {/* --- Top Tab Navigation --- */}
       <div className="flex flex-wrap gap-2 p-2 bg-gray-100/50 rounded-[2rem] border border-gray-100">

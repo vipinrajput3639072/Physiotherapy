@@ -30,7 +30,7 @@ const PatientProgress = () => {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700 pb-12">
+    <div className="flex-1 ml-72 overflow-y-auto space-y-8 animate-in fade-in duration-700 pb-12">
       {/* --- Header Section --- */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
         <div className="flex items-center gap-5">

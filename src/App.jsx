@@ -31,7 +31,8 @@ import AnalyticsDashboard from "./components/AdminAnalytics";
 import PatientProgress from "./components/AdminPatientProgress";
 import NotificationsHub from "./components/AdminNotifications";
 import SettingsManager from "./components/AdminSettings";
-import About from "./pages/About";
+import AppointmentDashboard from "./components/DoctorAppointments";
+import MyPatientsDashboard from "./components/DoctorPatient";
 
 const Home = lazy(() => import("./pages/Home"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -132,6 +133,11 @@ function App() {
             }
           >
             <Route index element={<DoctorDashboard />} />
+            <Route
+              path="Appointment-Dashboard"
+              element={<AppointmentDashboard />}
+            />
+            <Route path="MyPatients-Dashboard" element={<MyPatientsDashboard />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

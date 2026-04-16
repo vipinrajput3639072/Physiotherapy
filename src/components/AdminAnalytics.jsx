@@ -48,7 +48,7 @@ const AnalyticsDashboard = () => {
   ];
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-700 pb-12">
+    <div className="flex-1 ml-72 overflow-y-auto space-y-8 animate-in fade-in duration-700 pb-12">
       {/* --- Top Action Bar --- */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
