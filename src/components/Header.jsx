@@ -17,9 +17,7 @@ const Header = ({ user, logout }) => {
           <button className="p-2 md:hidden">
             <Menu className="w-6 h-6" />
           </button>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-            PhysioHub
-          </h1>
+          
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 p-2 bg-gray-100 rounded-xl hidden md:flex">

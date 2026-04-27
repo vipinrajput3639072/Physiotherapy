@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import AdminSidebar from "./AdminSidebar";
 import useAuthStore from "../stores/authStore";
+import VideoConsults from "./AdminVideoConsults";
 
 const AdminLayout = () => {
   const { user, logout } = useAuthStore();
@@ -13,6 +14,7 @@ const AdminLayout = () => {
         <main className="flex-1 p-4 md:p-8">
           <Outlet />
         </main>
+        
       </div>
     </div>
   );

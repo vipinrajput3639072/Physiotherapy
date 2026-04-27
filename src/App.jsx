@@ -10,6 +10,7 @@ import {
   Activity,
   CalendarClock,
   Home as HomeIcon,
+  Settings,
   Shield,
   Sparkles,
   Stethoscope,
@@ -33,6 +34,14 @@ import NotificationsHub from "./components/AdminNotifications";
 import SettingsManager from "./components/AdminSettings";
 import AppointmentDashboard from "./components/DoctorAppointments";
 import MyPatientsDashboard from "./components/DoctorPatient";
+import PatientAppointments from "./components/PatientAppointment";
+import PatientMessages from "./components/PatientMessages";
+import PatientNotifications from "./components/PatientNotifications";
+import PatientTreatmentPlan from "./components/PatientTreatmentPlan";
+import PatientExercises from "./components/PatientExercises";
+import Payments from "./components/PatientPayments";
+import Profile from "./components/PatientProfile";
+import VideoConsults from "./components/AdminVideoConsults";
 
 const Home = lazy(() => import("./pages/Home"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -101,6 +110,7 @@ function App() {
               path="Appointment-Management"
               element={<AppointmentManagement />}
             />
+            <Route path="Video-Management" element={<VideoConsults />}/>
             <Route
               path="Treatment-Management"
               element={<TreatmentManagement />}
@@ -123,6 +133,15 @@ function App() {
             }
           >
             <Route index element={<PatientDashboard />} />
+            <Route path="appointments" element={<PatientAppointments />} />
+            <Route path="Messages" element={<PatientMessages/>}/>
+            <Route path="Notifications" element={<PatientNotifications />} />
+            <Route path="Treatment-Plan" element={<PatientTreatmentPlan />}/>
+            <Route path="Exercises" element={<PatientExercises/>}/>
+            <Route path="Progress" element={<PatientProgress />}/>
+            <Route path="Payments" element={<Payments />}/>
+            <Route path="Profile" element={<Profile />}/>
+            <Route path="Settings" element={<Settings />}/>
           </Route>
           <Route
             path="/doctor/*"
@@ -137,7 +156,10 @@ function App() {
               path="Appointment-Dashboard"
               element={<AppointmentDashboard />}
             />
-            <Route path="MyPatients-Dashboard" element={<MyPatientsDashboard />} />
+            <Route
+              path="MyPatients-Dashboard"
+              element={<MyPatientsDashboard />}
+            />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

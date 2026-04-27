@@ -10,7 +10,6 @@ const PatientSidebar = () => {
   const navigate = useNavigate();
   const { logout, user } = useAuthStore();
   
-  // Organized into logical sections for better UX
   const navigationGroups = [
     {
       group: "Core",
@@ -45,7 +44,7 @@ const PatientSidebar = () => {
   };
 
   return (
-    <aside className="flex flex-col h-full w-full border-b border-gray-100 bg-gradient-to-b from-emerald-50 to-teal-50 shadow-lg backdrop-blur-md md:w-64 md:border-b-0 md:border-r">
+    <aside className="flex flex-col h-full w-full border-r border-emerald-100 bg-gradient-to-b from-emerald-50 to-teal-50 shadow-lg">
       {/* Header & User Info */}
       <div className="p-6 flex-shrink-0">
         <h2 className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
@@ -59,8 +58,8 @@ const PatientSidebar = () => {
         )}
       </div>
 
-      {/* Navigation - Scrollable area */}
-      <nav className="flex-1 overflow-y-auto px-4 py-2 custom-scrollbar">
+      {/* Navigation - Scrollbar line removed using 'no-scrollbar' */}
+      <nav className="flex-1 overflow-y-auto px-4 py-2 no-scrollbar">
         {navigationGroups.map((group, idx) => (
           <div key={idx} className="mb-6">
             <p className="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-emerald-600/60">
@@ -71,6 +70,7 @@ const PatientSidebar = () => {
                 <li key={item.to}>
                   <NavLink
                     to={item.to}
+                    end={item.to === '/patient'}
                     className={({ isActive }) =>
                       `flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ${
                         isActive

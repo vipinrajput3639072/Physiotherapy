@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   LogOut, BarChart3, Users, Calendar, ClipboardList,
   DollarSign, TrendingUp, Bell, Settings, Activity,
-  Stethoscope, Briefcase,
+  Stethoscope, Briefcase, Video, Star, MessageSquareQuote, // 1. Added icon
 } from "lucide-react";
 import useAuthStore from "../stores/authStore";
 
@@ -15,10 +15,13 @@ const AdminSidebar = () => {
     { icon: Users, label: "Patients", to: "/admin/Patient-Management" },
     { icon: Briefcase, label: "Therapists", to: "/admin/Therapist-Management" },
     { icon: Calendar, label: "Appointments", to: "/admin/Appointment-Management" },
-    { icon: ClipboardList, label: "Treatments", to: "/admin/Treatment-Management" },
-    { icon: Activity, label: "Patient Progress", to: "/admin/Patient-Progress" },
-    { icon: DollarSign, label: "Billing", to: "/admin/Billing-Management" },
+    { icon: Video, label: "Video Consults", to: "/admin/Video-Management" },
+    { icon: MessageSquareQuote, label: "Patient Reviews", to: "/admin/Patient-Reviews" }, // 2. Added Patient Review
+    // { icon: ClipboardList, label: "Treatments", to: "/admin/Treatment-Management" },
+    // { icon: Activity, label: "Patient Progress", to: "/admin/Patient-Progress" },
+    // { icon: DollarSign, label: "Billing", to: "/admin/Billing-Management" },
     { icon: TrendingUp, label: "Analytics", to: "/admin/Analytics-Dashboard" },
+    
     { icon: Bell, label: "Notifications", to: "/admin/Notifications-Hub" },
     { icon: Settings, label: "Settings", to: "/admin/Settings-Manager" },
   ];
@@ -50,7 +53,6 @@ const AdminSidebar = () => {
         </div>
       )}
 
-      {/* --- Scrollbar Removed via Tailwind Arbitrary Properties --- */}
       <nav className="flex-1 overflow-y-auto px-4 space-y-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {menuItems.map((item) => (
           <NavLink

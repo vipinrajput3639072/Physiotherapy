@@ -107,12 +107,12 @@ const TherapistManagement = () => {
                 placeholder="Search staff..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-11 pr-6 py-3.5 bg-white border border-gray-100 rounded-2xl text-xs font-bold outline-none w-64 shadow-sm"
+                className="pl-11 pr-6 py-3 bg-white border border-gray-100 rounded-2xl text-xs font-bold outline-none w-64 shadow-sm"
               />
             </div>
             <button 
               onClick={() => handleOpenModal()}
-              className="flex items-center justify-center gap-3 px-7 py-4 bg-blue-600 text-white rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.2em] hover:bg-blue-700 shadow-xl"
+              className="flex items-center justify-center gap-3 px-5 py-3 bg-blue-600 text-white rounded-[1.5rem] font-black uppercase text-[10px] tracking-[0.2em] hover:bg-blue-700 shadow-xl"
             >
               <Plus className="w-4 h-4" /> Add Specialist
             </button>
