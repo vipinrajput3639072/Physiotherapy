@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import LoginModal from "../components/LoginModal";
-// Import your LoginModal here
-// import LoginModal from './LoginModal';
 
 const Header2 = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Function to handle link click on mobile
+  const handleMobileLinkClick = () => {
+    setIsMobileMenuOpen(false); // Menu band ho jayega click karne par
+  };
+
+  const navLinks = [
+    { name: "Home", href: "#" },
+    { name: "About", href: "#about-section" },
+    { name: "Services", href: "#services-section" },
+    { name: "Contact", href: "#contact-section" },
+  ];
 
   return (
     <header className="absolute w-full px-4 md:px-10 mt-4 md:mt-6 z-50">
@@ -20,13 +30,13 @@ const Header2 = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-8 font-bold text-gray-500 text-xs uppercase tracking-widest">
-          {["Home", "About", "Services", "Contact"].map((item) => (
+          {navLinks.map((item) => (
             <a
-              key={item}
-              href={item === "Home" ? "#" : `#${item.toLowerCase()}-section`}
+              key={item.name}
+              href={item.href}
               className="hover:text-teal-500 transition-all duration-300 relative group"
             >
-              {item}
+              {item.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all group-hover:w-full" />
             </a>
           ))}
@@ -34,34 +44,31 @@ const Header2 = () => {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 md:gap-4">
-          {/* Replace with your actual LoginModal component */}
           <LoginModal />
-          
+
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 text-gray-600"
+            className="lg:hidden p-2 text-gray-600 outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown Menu - Fixed and Functional */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-xl p-6 border border-gray-100 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
-          <a href="#" className="font-bold text-teal-500">
-            Home
-          </a>
-          <a href="#about" className="font-bold text-gray-600">
-            About
-          </a>
-          <a href="#services" className="font-bold text-gray-600">
-            Services
-          </a>
-          <a href="#contact" className="font-bold text-gray-600">
-            Contact
-          </a>
+        <div className="lg:hidden absolute top-20 left-4 right-4 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100 flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 z-50">
+          {navLinks.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={handleMobileLinkClick}
+              className="font-bold text-gray-600 hover:text-teal-500 py-2 border-b border-gray-50 last:border-0 transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
       )}
     </header>

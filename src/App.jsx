@@ -42,6 +42,8 @@ import PatientExercises from "./components/PatientExercises";
 import Payments from "./components/PatientPayments";
 import Profile from "./components/PatientProfile";
 import VideoConsults from "./components/AdminVideoConsults";
+import PatientReviews from "./components/AdminPatientReviews";
+import PatientSettings from "./components/PatientSettings";
 
 const Home = lazy(() => import("./pages/Home"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -111,6 +113,7 @@ function App() {
               element={<AppointmentManagement />}
             />
             <Route path="Video-Management" element={<VideoConsults />}/>
+            <Route path="Patient-Reviews" element={<PatientReviews/>}/>
             <Route
               path="Treatment-Management"
               element={<TreatmentManagement />}
@@ -122,7 +125,7 @@ function App() {
             />
             <Route path="Patient-Progress" element={<PatientProgress />} />
             <Route path="Notifications-Hub" element={<NotificationsHub />} />
-            <Route path="Settings-Manager" element={<SettingsManager />} />
+            <Route path="Settings" element={<PatientSettings />} />
           </Route>
           <Route
             path="/patient/*"

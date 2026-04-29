@@ -1,10 +1,16 @@
-import { useState } from "react";
-import { Search, Edit2, Trash2, History, UserPlus, X, Plus } from "lucide-react";
-import { fakeData } from "../utils/fakeData";
+import React, { useState } from "react";
+import { Search, Edit2, Trash2, X, Plus } from "lucide-react";
 import toast from "react-hot-toast";
 
+// Mock data agar fakeData file available na ho
+const initialPatients = [
+  { id: 1, name: "Arjun Mehta", age: 45, status: "Active" },
+  { id: 2, name: "Sneha Kapoor", age: 28, status: "Pending" },
+  { id: 3, name: "Vikram Rathore", age: 52, status: "Completed" },
+];
+
 const PatientManagement = () => {
-  const [patients, setPatients] = useState(fakeData.admin.patients);
+  const [patients, setPatients] = useState(initialPatients);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPatient, setEditingPatient] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,24 +28,21 @@ const PatientManagement = () => {
     setIsModalOpen(true);
   };
 
-  // --- Add or Update Function ---
   const handleSavePatient = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     
     const patientData = {
-      id: editingPatient ? editingPatient.id : patients.length + 1,
+      id: editingPatient ? editingPatient.id : Date.now(),
       name: formData.get("name"),
       age: formData.get("age"),
       status: formData.get("status"),
     };
 
     if (editingPatient) {
-      // Update logic
       setPatients(patients.map(p => p.id === editingPatient.id ? patientData : p));
       toast.success("Profile updated successfully");
     } else {
-      // Add logic
       setPatients([patientData, ...patients]);
       toast.success("New patient registered");
     }
@@ -53,10 +56,10 @@ const PatientManagement = () => {
   );
 
   return (
-    <div className="ml-72 min-h-screen bg-gray-50/50 p-8 pt-10 animate-in fade-in duration-500">
+    <div className="md:ml-64 min-h-screen bg-gray-50/50 p-6 lg:p-10 animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto space-y-8">
         
-        {/* Header Section */}
+        {/* --- HEADER --- */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <h1 className="text-3xl font-black text-gray-900 tracking-tight">
@@ -82,12 +85,12 @@ const PatientManagement = () => {
               className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 active:scale-95"
             >
               <Plus className="w-5 h-5" />
-              <span>Add Patient</span>
+              <span className="hidden sm:inline">Add Patient</span>
             </button>
           </div>
         </div>
 
-        {/* Table Section */}
+        {/* --- TABLE SECTION --- */}
         <div className="bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left">
@@ -103,28 +106,29 @@ const PatientManagement = () => {
                   <tr key={patient.id} className="hover:bg-blue-50/30 transition-colors group">
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-black">
+                        <div className="w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-black">
                           {patient.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="font-bold text-gray-900">{patient.name}</p>
-                          <p className="text-xs text-gray-400">ID: #{patient.id} • {patient.age} yrs</p>
+                          <p className="font-bold text-gray-900 text-sm">{patient.name}</p>
+                          <p className="text-[11px] text-gray-400">ID: #{patient.id.toString().slice(-4)} • {patient.age} yrs</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-8 py-6">
-                      <span className={`px-4 py-1.5 rounded-xl text-[10px] font-black uppercase ${
-                        patient.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"
+                      <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase ${
+                        patient.status === "Active" ? "bg-emerald-100 text-emerald-700" : 
+                        patient.status === "Completed" ? "bg-blue-100 text-blue-700" : "bg-amber-100 text-amber-700"
                       }`}>
                         {patient.status}
                       </span>
                     </td>
                     <td className="px-8 py-6 text-right">
-                      <div className="flex justify-end gap-2">
-                        <button onClick={() => handleOpenModal(patient)} className="p-2.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all">
+                      <div className="flex justify-end gap-1">
+                        <button onClick={() => handleOpenModal(patient)} className="p-2 text-gray-400 hover:text-blue-600 hover:bg-white rounded-lg transition-all shadow-sm border border-transparent hover:border-gray-100">
                           <Edit2 className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleDelete(patient.id)} className="p-2.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all">
+                        <button onClick={() => handleDelete(patient.id)} className="p-2 text-gray-400 hover:text-rose-600 hover:bg-white rounded-lg transition-all shadow-sm border border-transparent hover:border-gray-100">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
@@ -137,46 +141,53 @@ const PatientManagement = () => {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* --- COMPACT CENTERED MODAL --- */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-end bg-black/20 backdrop-blur-sm">
-          <div className="w-full max-w-lg h-full bg-white shadow-2xl animate-in slide-in-from-right duration-500 overflow-y-auto">
-            <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
-              <h2 className="text-2xl font-black text-gray-900">
-                {editingPatient ? "Edit Profile" : "New Registration"}
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+          <div className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl animate-in zoom-in-95 duration-200 overflow-hidden border border-gray-100">
+            
+            {/* Modal Header */}
+            <div className="px-8 py-5 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
+              <h2 className="text-xl font-black text-gray-900">
+                {editingPatient ? "Edit Profile" : "Register Patient"}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-3 hover:bg-gray-100 rounded-2xl text-gray-400">
-                <X className="w-6 h-6" />
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-white rounded-xl text-gray-400 shadow-sm transition-all">
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form className="p-8 space-y-6" onSubmit={handleSavePatient}>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Full Name</label>
+            {/* Compact Form */}
+            <form className="p-8 space-y-4" onSubmit={handleSavePatient}>
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
                 <input
                   name="name"
                   type="text"
                   required
                   defaultValue={editingPatient?.name}
-                  className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner"
-                  placeholder="e.g. Rahul Sharma"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all text-sm font-medium"
+                  placeholder="Rahul Sharma"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Age</label>
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Age</label>
                   <input
                     name="age"
                     type="number"
                     required
                     defaultValue={editingPatient?.age}
-                    className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all text-sm"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-1">Status</label>
-                  <select name="status" defaultValue={editingPatient?.status || "Active"} className="w-full p-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all shadow-inner appearance-none cursor-pointer">
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Status</label>
+                  <select 
+                    name="status" 
+                    defaultValue={editingPatient?.status || "Active"} 
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all text-sm cursor-pointer appearance-none"
+                  >
                     <option value="Active">Active</option>
                     <option value="Pending">Pending</option>
                     <option value="Completed">Completed</option>
@@ -184,12 +195,20 @@ const PatientManagement = () => {
                 </div>
               </div>
 
-              <div className="pt-6 flex gap-4">
-                <button type="button" onClick={() => setIsModalOpen(false)} className="flex-1 py-4 text-gray-500 font-bold hover:bg-gray-100 rounded-2xl transition-all">
+              {/* Actions */}
+              <div className="pt-4 flex gap-3">
+                <button 
+                  type="button" 
+                  onClick={() => setIsModalOpen(false)} 
+                  className="flex-1 py-3 text-gray-500 font-bold hover:bg-gray-100 rounded-xl transition-all text-sm"
+                >
                   Cancel
                 </button>
-                <button type="submit" className="flex-[2] py-4 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 shadow-lg transition-all active:scale-95">
-                  {editingPatient ? "Update Record" : "Create Profile"}
+                <button 
+                  type="submit" 
+                  className="flex-[1.5] py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 shadow-md transition-all active:scale-95 text-sm"
+                >
+                  {editingPatient ? "Save Changes" : "Register Now"}
                 </button>
               </div>
             </form>

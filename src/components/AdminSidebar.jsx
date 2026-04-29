@@ -70,12 +70,7 @@ const AdminSidebar = () => {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-gray-50 mt-auto">
-        <button onClick={handleLogout} className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-gray-400 hover:text-rose-600 hover:bg-rose-50 transition-all font-bold text-sm">
-          <LogOut size={18} />
-          <span>Sign Out</span>
-        </button>
-      </div>
+      
     </aside>
   );
 };

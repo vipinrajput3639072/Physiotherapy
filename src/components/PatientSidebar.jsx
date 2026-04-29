@@ -90,15 +90,7 @@ const PatientSidebar = () => {
       </nav>
 
       {/* Footer / Logout */}
-      <div className="p-4 mt-auto border-t border-emerald-100/50">
-        <button
-          onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-xl p-3 bg-rose-50 text-rose-600 border border-rose-100 hover:bg-rose-100 transition-all font-semibold"
-        >
-          <LogOut className="w-5 h-5" />
-          Logout
-        </button>
-      </div>
+      
     </aside>
   );
 };
